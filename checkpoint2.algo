@@ -1,0 +1,67 @@
+def dot_product(v1, v2):
+    if len(v1) != len(v2):
+        raise ValueError("el vecteur dimention lezem ikounou kifkif")
+    
+    ps = 0
+    for i in range(len(v1)):
+        ps += v1[i] * v2[i]
+    
+    return ps
+
+
+def are_vectors_orthogonal(v1, v2):
+    dot_prod = dot_product(v1, v2)
+    return dot_prod == 0
+
+
+def main():
+    n = int(input("Enter the number of vector pairs: "))
+
+    for i in range(n):
+        print(f"Enter vector pair {i+1}:")
+        v1 = list(map(float, input("Enter the components of vector 1 separated by space: ").split()))
+        v2 = list(map(float, input("Enter the components of vector 2 separated by space: ").split()))
+
+        if len(v1) != len(v2):
+            print("Vector dimensions must be the same.")
+            continue
+
+        if are_vectors_orthogonal(v1, v2):
+            print("The two vectors are orthogonal.")
+        else:
+            print("The two vectors are not orthogonal.")
+
+if __name__ == "__main__":
+    main()
+
+second task
+
+def insertion_sort(arr):
+    # Traverse through 1 to len(arr) to cover all elements in the array
+    for i in range(1, len(arr)):
+        # Pick the current element to be inserted into the sorted sequence
+        current_element = arr[i]
+
+        # Initialize a variable to keep track of the index to compare and insert the current element
+        j = i - 1
+
+        # Move elements of arr[0..i-1], that are greater than the current element,
+        # to one position ahead of their current position
+        while j >= 0 and current_element < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+
+        # Insert the current element in its correct position
+        arr[j + 1] = current_element
+
+# Test the implementation
+if __name__ == "__main__":
+    # Example array to be sorted
+    unsorted_array = [64, 34, 25, 12, 22, 11, 90]
+    
+    print("Unsorted array:", unsorted_array)
+
+    # Sort the array using Insertion Sort
+    insertion_sort(unsorted_array)
+
+    print("Sorted array:", unsorted_array)
